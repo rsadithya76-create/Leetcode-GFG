@@ -1,7 +1,12 @@
 class Solution {
 	public boolean isKaprekar(int n) {
 		// code her
-		int c = String.valueOf(n).length();
+		int c = 0;
+		int temp=n;
+		while(temp!=0){
+		    temp/=10;
+		    c++;
+		}
 		if (n == 1) {
 			return true;
 			
