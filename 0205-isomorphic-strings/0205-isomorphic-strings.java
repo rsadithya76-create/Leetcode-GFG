@@ -1,8 +1,6 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
         String x = "qwertyuiop[]asdfghjkl;'\\zxcvbnm,./";
-        String y = "',.pyfgcrl/=aoeuidhtns-\\;qjkxbmwvz";
-   
         if(s.equals(x) )
             return true;
         HashMap<Character,Character>l1=new HashMap<>();
