@@ -1,0 +1,12 @@
+class Solution {
+    public int maxSubArray(int[] nums) {       // kennans algorithm;
+        int current=0;
+        int maxi=nums[0];
+        for(int i=0;i<nums.length;i++){
+            current+=nums[i];
+            maxi=Math.max(maxi,current);
+            if(current<0) current=0;
+        }
+        return maxi;
+    }
+}
