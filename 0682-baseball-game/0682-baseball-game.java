@@ -1,31 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
     public int calPoints(String[] operations) {
-        Stack<Integer> st = new Stack<>();
-        for(String str:operations){
-              if(str.equals("+")){
-                 int second=st.pop();
-                 int first =st.peek();
-                 int third=second+first;
-                 st.push(second);
-                 st.push(third);
-              }
-              else if(str.equals("D")){
-                int pre=st.peek();
-                int sco=pre*2;
-                st.push(sco);
-              }
-              else if(str.equals("C")){
-                st.pop();
-              }
-              else{
-                st.push(Integer.parseInt(str));
-              }
+        List<Integer> scores = new ArrayList<>();
+        
+        for (String str : operations) {
+            if (str.equals("+")) {
+                scores.add(scores.get(scores.size() - 1) + scores.get(scores.size() - 2));
+            } else if (str.equals("D")) {
+                scores.add(scores.get(scores.size() - 1) * 2);
+            } else if (str.equals("C")) {
+                scores.remove(scores.size() - 1);
+            } else {
+                scores.add(Integer.parseInt(str));
+            }
         }
-        int res=0;
-        while(!st.isEmpty()){
-            res+=st.pop();
+        
+        int totalScore = 0;
+        for (int score : scores) {
+            totalScore += score;
         }
-        return res;
-
+        
+        return totalScore;
     }
 }
